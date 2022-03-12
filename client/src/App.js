@@ -1,32 +1,33 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Main from "./pages/Main";
+import Events from "./pages/Events";
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: ""};
-  }
-
-  callAPI() {
-    fetch("http://localhost:9000/testAPI")
-    .then(res => res.text())
-    .then(res => this.setState({ apiResponse: res}))
-    .catch(err => err);
-  }
-
-  componentDidMount() {
-    this.callAPI();
-  }
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-intro">{this.state.apiResponse}</h1>  
-        </header> 
-      </div>
+      <>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Routes>
+          <Footer />
+        </Router>
+          
+      </>
     )
   }
 }
