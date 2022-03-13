@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.w-10 {
+  width: 10%!important;
+}
+
 .event-truncate {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -19,4 +23,13 @@ code {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.text-about {
+  color: rgb(36, 96, 119);
+}
+
+iframe {
+  width: 600px;
+  height: 450px;
 }
