@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -29,7 +30,20 @@ code {
   color: rgb(36, 96, 119);
 }
 
-iframe {
-  width: 600px;
-  height: 450px;
+.map {
+  width: 100vw!important;
+  height: 75vh!important;
+  position: relative!important;
+}
+
+.contacts-cards {
+  min-height: 24rem;
+  max-height: 30rem;
+  width: 24rem;
+  transition: 0.15s ease-in-out;
+}
+
+.contacts-cards:hover {
+  transition: 0.15s ease-in-out;
+  transform: scale(1.1);
 }
