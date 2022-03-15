@@ -12,6 +12,7 @@ import Events from "./pages/Events";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/events" element={<Events />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />

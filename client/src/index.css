@@ -26,6 +26,10 @@ body {
   flex: 1;
 }
 
+#login-container {
+  flex: 1;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

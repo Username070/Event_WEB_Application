@@ -31,14 +31,19 @@ const Footer = () => {
                             <Link className="nav-link px-2 text-muted" to="/contacts">Contacts</Link>
                         </li>
                         {user ? (
-                                <li className="nav-item">
-                                    <a className="nav-link px-2 text-muted cursor-pointer" onClick={onLogout}>Logout</a>
-                                </li>
-                            ) :
+                            <li className="nav-item">
+                                <a className="nav-link px-2 text-muted cursor-pointer" onClick={onLogout}>Logout</a>
+                            </li>
+                        ) :
+                            <>
                                 <li className="nav-item">
                                     <Link className="nav-link px-2 text-muted" to="/register">Register</Link>
                                 </li>
-                            }
+                                <li className="nav-item">
+                                    <Link className="nav-link px-2 text-muted" to="/login">Login</Link>
+                                </li>
+                            </>
+                        }
                     </ul>
                     <p className="text-center text-muted">© 2022 Ignas. Inc</p>
                 </footer>
