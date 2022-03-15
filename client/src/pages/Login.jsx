@@ -54,7 +54,7 @@ const Login = () => {
 
     return (
         <>
-            <main id="login-container" className="pb-4">
+            <main className="pb-4">
                 <div className="text-center py-4">
                     <h2>Welcome Back!</h2>
                     <hr className="my-4 py-1 w-10 m-auto"></hr>
