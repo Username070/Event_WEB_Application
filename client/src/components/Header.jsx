@@ -1,14 +1,18 @@
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-} from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout, reset } from '../features/authSlice';
+
 
 const Header = () => {
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+
+    const onLogout = () => {
+        dispatch(logout());
+        dispatch(reset());
+        navigate('/');
+    }
 
     return (
         <>
@@ -23,15 +27,6 @@ const Header = () => {
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/">Main</Link>
                             </li>
-                            { user ? (
-                                <li className="nav-item">
-                                    Logout
-                                </li>
-                            ) :
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register">Register</Link>
-                            </li>
-                            }
                             <li className="nav-item">
                                 <Link className="nav-link" to="/events">Events</Link>
                             </li>
@@ -41,6 +36,15 @@ const Header = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/contacts">Contacts</Link>
                             </li>
+                            {user ? (
+                                <li className="nav-item">
+                                    <button className="nav-link border-0 bg-light" onClick={onLogout}>Logout</button>
+                                </li>
+                            ) :
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/register">Register</Link>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav>

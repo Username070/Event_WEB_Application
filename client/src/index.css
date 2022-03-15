@@ -8,6 +8,10 @@ body {
   overflow-x: hidden;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 #user-icon {
   font-size: 10rem;
 }
