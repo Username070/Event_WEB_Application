@@ -3,10 +3,12 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+
+    const { user } = useSelector((state) => state.auth);
 
     return (
         <>
@@ -21,7 +23,16 @@ const Header = () => {
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/">Main</Link>
                             </li>
-                            <li className="nav-item active">
+                            { user ? (
+                                <li className="nav-item">
+                                    Logout
+                                </li>
+                            ) :
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/register">Register</Link>
+                            </li>
+                            }
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/events">Events</Link>
                             </li>
                             <li className="nav-item">

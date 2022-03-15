@@ -10,6 +10,9 @@ const Footer = () => {
                             <Link className="nav-link px-2 text-muted" to="/">Main</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link px-2 text-muted" to="/register">Register</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link px-2 text-muted" to="/events">Events</Link>
                         </li>
                         <li className="nav-item">

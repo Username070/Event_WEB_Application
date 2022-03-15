@@ -8,6 +8,20 @@ body {
   overflow-x: hidden;
 }
 
+#user-icon {
+  font-size: 10rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#register-container {
+  flex: 1;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
