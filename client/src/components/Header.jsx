@@ -37,9 +37,18 @@ const Header = () => {
                                 <Link className="nav-link" to="/contacts">Contacts</Link>
                             </li>
                             {user ? (
-                                <li className="nav-item">
-                                    <button className="nav-link border-0 bg-light" onClick={onLogout}>Logout</button>
-                                </li>
+                                <>
+                                    <li class="btn-group nav-item">
+                                        <a type="button" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {user.name}
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Events control</a></li>
+                                            <li><hr class="dropdown-divider"></hr></li>
+                                            <li><button className="nav-link border-0 dropdown-item" onClick={onLogout}>Logout</button></li>
+                                        </ul>
+                                    </li>
+                                </>
                             ) :
                                 <>
                                     <li className="nav-item">

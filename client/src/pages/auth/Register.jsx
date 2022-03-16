@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {render } from 'react-dom';
-import { register, reset } from '../features/authSlice'
+import { register, reset } from '../../features/authSlice'
 import { FaUserCircle } from 'react-icons/fa'
 
 const Register = () => {

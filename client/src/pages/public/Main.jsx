@@ -14,7 +14,7 @@ const Main = () => {
                     <div className="row">
                         <div className="col-md-6 mb-5">
                             <div className="card shadow">
-                                <img src={require("../img/placeholder1.jpg")} className="card-img-top" alt="..." />
+                                <img src={require("../../img/placeholder1.jpg")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">Placeholder</h5>
                                     <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
@@ -24,7 +24,7 @@ const Main = () => {
                         </div>
                         <div className="col-md-6 mb-5">
                             <div className="card shadow">
-                                <img src={require("../img/placeholder2.jpg")} className="card-img-top" alt="..." />
+                                <img src={require("../../img/placeholder2.jpg")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">Placeholder</h5>
                                     <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
@@ -34,7 +34,7 @@ const Main = () => {
                         </div>
                         <div className="col-md-6 mb-5">
                             <div className="card shadow">
-                                <img src={require("../img/placeholder3.jpg")} className="card-img-top" alt="..." />
+                                <img src={require("../../img/placeholder3.jpg")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">Placeholder</h5>
                                     <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
@@ -44,7 +44,7 @@ const Main = () => {
                         </div>
                         <div className="col-md-6 mb-5">
                             <div className="card shadow">
-                                <img src={require("../img/placeholder4.jpg")} className="card-img-top" alt="..." />
+                                <img src={require("../../img/placeholder4.jpg")} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">Placeholder</h5>
                                     <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>

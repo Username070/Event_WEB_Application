@@ -1,6 +1,6 @@
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import React, { Component } from "react";
-import SimpleMap from "../components/SimpleMap"
+import SimpleMap from "../../components/SimpleMap"
 
 const Contacts = () => {
     return (

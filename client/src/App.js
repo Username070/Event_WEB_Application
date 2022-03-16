@@ -7,12 +7,12 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Main from "./pages/Main";
-import Events from "./pages/Events";
-import About from "./pages/About";
-import Contacts from "./pages/Contacts";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import Main from "./pages/public/Main";
+import Events from "./pages/public/AllEvents";
+import About from "./pages/public/About";
+import Contacts from "./pages/public/Contacts";
+import Register from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 
 class App extends Component {
   render() {
