@@ -38,14 +38,20 @@ const Header = () => {
                             </li>
                             {user ? (
                                 <>
-                                    <li class="btn-group nav-item">
-                                        <a type="button" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <li className="btn-group nav-item">
+                                        <a type="button" className="dropdown-toggle nav-link" data-bs-toggle="dropdown" aria-expanded="false">
                                             {user.name}
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Events control</a></li>
-                                            <li><hr class="dropdown-divider"></hr></li>
-                                            <li><button className="nav-link border-0 dropdown-item" onClick={onLogout}>Logout</button></li>
+                                        <ul className="dropdown-menu dropdown-menu-end">
+                                            <li>
+                                                <Link className="dropdown-item" to="/create-event">New event</Link>
+                                                </li>
+                                            <li>
+                                                <hr className="dropdown-divider"></hr>
+                                            </li>
+                                            <li>
+                                                <button className="nav-link border-0 dropdown-item" onClick={onLogout}>Logout</button>
+                                            </li>
                                         </ul>
                                     </li>
                                 </>

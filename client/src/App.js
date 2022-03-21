@@ -13,6 +13,7 @@ import About from "./pages/public/About";
 import Contacts from "./pages/public/Contacts";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
+import CreateEvent from "./pages/private/CreateEvent";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
             <Route path="/events" element={<Events />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/create-event" element={<CreateEvent />} />
           </Routes>
           <Footer />
         </Router>
