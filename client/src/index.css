@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+#user-icon {
+  font-size: 10rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.w-10 {
+  width: 10%!important;
+}
+
+.event-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-about {
+  color: rgb(36, 96, 119);
+}
+
+.map {
+  width: 100vw!important;
+  height: 75vh!important;
+  position: relative!important;
+}
+
+.contacts-cards {
+  min-height: 24rem;
+  max-height: 30rem;
+  width: 24rem;
+  transition: 0.15s ease-in-out;
+}
+
+.contacts-cards:hover {
+  transition: 0.15s ease-in-out;
+  transform: scale(1.1);
+}
