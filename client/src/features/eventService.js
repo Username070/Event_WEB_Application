@@ -9,7 +9,7 @@ const createEvent = async (eventData, token) => {
         }
     }
 
-    const response = await axios.post(API_URL, eventData, config)
+    const response = await axios.post(API_URL + "create", eventData, config)
 
     return response.data
 }

@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { createEvent } from "../../features/eventSlice"
 
 const CreateEvent = () => {
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { event, isError, isSuccess, message } = useSelector((state) => state.task);
 
   const { user } = useSelector((state) => state.auth);
 
@@ -12,7 +16,11 @@ const CreateEvent = () => {
     if (!user) {
       navigate("/login");
     }
-  }, [user, navigate]);
+
+    if (isSuccess || event) {
+      navigate("/")
+    }
+  }, [user, navigate, isSuccess, event]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -22,9 +30,7 @@ const CreateEvent = () => {
     image: "",
   });
 
-  const { title, date, time, description, image } = formData;
-
-  const dispatch = useDispatch();
+  const { title, date, time, description } = formData; // image
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -42,7 +48,7 @@ const CreateEvent = () => {
         date,
         time,
         description,
-        image
+        // image
     }
 
     dispatch(createEvent(eventData));
@@ -139,7 +145,7 @@ const CreateEvent = () => {
                       className="form-control"
                       id="image"
                       name="image"
-                      value={image}
+                      // value={image}
                       onChange={onChange}
                       required
                     />
