@@ -70,7 +70,6 @@ const Register = () => {
     }
     return (
         <>
-        { errors.password ? <span>{errors.password}</span> : null}
             <main className="pb-4">
                 <div className="text-center py-4">
                     <h2>Create New User</h2>
