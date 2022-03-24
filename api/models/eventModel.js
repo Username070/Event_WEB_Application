@@ -22,16 +22,10 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a description']
     },
-    // image: {
-    //     name: String,
-    //     desc: String,
-    //     img:
-    //     {
-    //         data: Buffer,
-    //         contentType: String
-    //     },
-    //     required: [true, 'Please add a image']
-    // }
+    image: {
+        type: String,
+        required: [true, 'Please add a image']
+    }
 },
 {
     timestamps: true

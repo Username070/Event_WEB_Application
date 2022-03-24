@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ const CreateEvent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { event, isError, isSuccess, message } = useSelector((state) => state.task);
+  const { event, isError, isSuccess, message } = useSelector((state) => state.events);
 
   const { user } = useSelector((state) => state.auth);
 
@@ -17,9 +18,9 @@ const CreateEvent = () => {
       navigate("/login");
     }
 
-    if (isSuccess || event) {
-      navigate("/")
-    }
+    // if (isSuccess) {
+    //   navigate("/") // TODO Navigate to user specific events page
+    // }
   }, [user, navigate, isSuccess, event]);
 
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const CreateEvent = () => {
     image: "",
   });
 
-  const { title, date, time, description } = formData; // image
+  const { title, date, time, description, image } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -39,7 +40,41 @@ const CreateEvent = () => {
     }));
   };
 
-  const onSubmit = (e) => {
+  const processFile = async (e) => {
+
+    setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
+
+    var file = e.target.files[0];
+
+    let imageUrl = "";
+    const imageData = new FormData();
+
+    // TODO: Transfer this thing to api
+    imageData.append("file", file);
+    imageData.append("cloud_name", "");
+    imageData.append("upload_preset", "");
+    // let dataRes = await fetch(
+    //     "https://api.cloudinary.com/v1_1/deq8ty2tz/upload",
+    //     {
+    //       method: "post",
+    //       mode: "cors",
+    //       body: imageData
+    //     }
+    //   );
+    const dataRes = await axios({
+        method: "post",
+        url: "",
+        headers: {},
+        data: imageData
+    });
+    // imageUrl = await dataRes.data.url;
+
+  }
+
+  const onSubmit = async (e) => {
 
     e.preventDefault();
 
@@ -48,10 +83,11 @@ const CreateEvent = () => {
         date,
         time,
         description,
-        // image
+        // image: imageUrl
     }
 
-    dispatch(createEvent(eventData));
+
+    // dispatch(createEvent(eventData));
     
   };
 
@@ -62,6 +98,7 @@ const CreateEvent = () => {
           <h2>Create New Event</h2>
           <hr className="my-4 py-1 w-10 m-auto"></hr>
         </div>
+        {/* TODO: Add error displaying */}
         <div className="container w-25 m-auto p-3 border rounded shadow">
           <div id="errors-container"></div>
           <form onSubmit={onSubmit}>
@@ -145,8 +182,9 @@ const CreateEvent = () => {
                       className="form-control"
                       id="image"
                       name="image"
-                      // value={image}
-                      onChange={onChange}
+                      value={image}
+                      onChange={processFile}
+                      accept=".png, .jpg, .jpeg"
                       required
                     />
                   </div>
