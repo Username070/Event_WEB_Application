@@ -11,18 +11,18 @@ const setEvent = asyncHandler( async (req, res) => {
 
     // TODO: Check if event already exists
     //       Error handling
-    //       Upload image
+    //       Check image resolution
 
     const event = await Event.create({
         user: req.user.id,
-        title: req.body.title,
-        date: req.body.date,
-        time: req.body.time,
-        description: req.body.description,
-        image: req.body.image
+        title: req.body.eventData.title,
+        date: req.body.eventData.date,
+        time: req.body.eventData.time,
+        description: req.body.eventData.description,
+        image: req.body.imageUrl
     })
 
-    res.status(200).json(event);
+    res.status(201).json(event);
 });
 
 module.exports = {
