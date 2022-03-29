@@ -21,7 +21,7 @@ const CreateEvent = () => {
     // if (isSuccess) {
     //   navigate("/") // TODO Navigate to user specific events page
     // }
-  }, [user, navigate, isSuccess, event, isLoading]);
+  }, [user, navigate, isSuccess, event, isLoading, isError, message]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -44,21 +44,23 @@ const CreateEvent = () => {
 
     e.preventDefault();
 
-    const file = e.target[4].files[0];
+    const eventData = new FormData();
 
-    const imageData = new FormData();
+    eventData.append("title", title)
+    eventData.append("date", date)
+    eventData.append("time", time)
+    eventData.append("description", description)
+    eventData.append("image", e.target[4].files[0])
 
-    imageData.append("file", file);
+    // const eventData = {
+    //   title,
+    //   date,
+    //   time,
+    //   description,
+    //   image
+    // }
 
-    const eventData = {
-      title,
-      date,
-      time,
-      description,
-      image: imageData
-    }
-
-    dispatch(createEvent(eventData));
+    dispatch(createEvent(eventData))
   };
 
   return (
@@ -68,11 +70,16 @@ const CreateEvent = () => {
           <h2>Create New Event</h2>
           <hr className="my-4 py-1 w-10 m-auto"></hr>
         </div>
-        {/* TODO: Add error displaying */}
         <div className="position-relative">
           {isLoading ? (<Spinner />) : ("")}
           <div className={isLoading ? ("container w-25 p-3 border rounded shadow blur") : ("container w-25 p-3 border rounded shadow")}>
-            <div id="errors-container"></div>
+            <div id="errors-container">
+              {isError ? (
+                <div className="alert alert-danger" role="alert">
+                  {message}
+                </div>
+              ): ("")}
+            </div>
             <form onSubmit={onSubmit} id="form">
               <div className="container">
                 <div className="row">
