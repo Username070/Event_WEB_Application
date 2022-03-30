@@ -1,4 +1,28 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { globalEvents, reset } from "../../features/eventSlice";
+import EventCard from "../../components/EventCard"
+import Spinner from "../../components/Spinner"
+
 const Main = () => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const { events, isLoading, isError, message } = useSelector((state) => state.events)
+
+    useEffect(() => {
+        if (isError) {
+            console.log(message)
+        }
+
+        dispatch(globalEvents())
+        return () => {
+            dispatch(reset())
+        }
+    }, [navigate, dispatch, isError, message])
+    
     return (
         <>
             <main>
@@ -12,46 +36,13 @@ const Main = () => {
                 </div>
                 <div className="container-fluid gap-3">
                     <div className="row">
-                        <div className="col-md-6 mb-5">
-                            <div className="card shadow">
-                                <img src={require("../../img/placeholder1.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Placeholder</h5>
-                                    <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
-                                    <button type="button" className="btn btn-primary float-end">More..</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mb-5">
-                            <div className="card shadow">
-                                <img src={require("../../img/placeholder2.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Placeholder</h5>
-                                    <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
-                                    <button type="button" className="btn btn-primary float-end">More..</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mb-5">
-                            <div className="card shadow">
-                                <img src={require("../../img/placeholder3.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Placeholder</h5>
-                                    <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
-                                    <button type="button" className="btn btn-primary float-end">More..</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mb-5">
-                            <div className="card shadow">
-                                <img src={require("../../img/placeholder4.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Placeholder</h5>
-                                    <p className="card-text event-truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cumque magni ipsum quis vero, deserunt, commodi maxime eaque quae ex veniam delectus. Blanditiis quos dicta deserunt, architecto voluptates fuga dolore eum numquam quidem incidunt nobis est aliquam veniam consectetur illo expedita non, et dolorum adipisci id molestiae asperiores voluptatibus nostrum! Est, incidunt voluptatum. Dicta iure nostrum impedit, consectetur sequi dolor!</p>
-                                    <button type="button" className="btn btn-primary float-end">More..</button>
-                                </div>
-                            </div>
-                        </div>
+                        {events.length > 0 ? (
+                            events[0].map((event) => (
+                                <EventCard key={event._id} event={event}/>  
+                            ))
+                        ) : (
+                            <Spinner position={"position-relative"}/>
+                        )}
                     </div>
                 </div>
             </main>

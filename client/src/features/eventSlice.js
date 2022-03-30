@@ -9,6 +9,20 @@ const initialState = {
     message: ''
 }
 
+export const globalEvents = createAsyncThunk("events/globalEvents", async (_, thunkAPI) => {
+    try {
+
+        return await eventService.globalEvents()
+    } catch (error) {
+        const message =
+        (error.response &&
+            error.response.data &&
+            error.response.data.message)
+            || error.message || error.toString()
+            return thunkAPI.rejectWithValue(message);
+    }
+})
+
 export const createEvent = createAsyncThunk("events/create", async (eventData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
@@ -28,7 +42,12 @@ export const eventSlice = createSlice({
     name: "event",
     initialState,
     reducers: {
-        reset: (state) => initialState,
+        reset: (state) => {
+            state.isLoading = false
+            state.isSuccess = false
+            state.isError = false
+            state.message = ''
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -41,6 +60,19 @@ export const eventSlice = createSlice({
                 state.events.push(action.payload)
             })
             .addCase(createEvent.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(globalEvents.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(globalEvents.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.events.push(action.payload)
+            })
+            .addCase(globalEvents.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

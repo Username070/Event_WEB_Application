@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createEvent } from "../../features/eventSlice";
+import { createEvent, reset } from "../../features/eventSlice";
 import Spinner from "../../components/Spinner.jsx"
 
 const CreateEvent = () => {
@@ -18,10 +18,14 @@ const CreateEvent = () => {
       navigate("/login");
     }
 
-    // if (isSuccess) {
-    //   navigate("/") // TODO Navigate to user specific events page
-    // }
-  }, [user, navigate, isSuccess, event, isLoading, isError, message]);
+    if (isSuccess) {
+      navigate("/")
+    }
+
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, dispatch, isSuccess, event, isError, message]);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -71,14 +75,14 @@ const CreateEvent = () => {
           <hr className="my-4 py-1 w-10 m-auto"></hr>
         </div>
         <div className="position-relative">
-          {isLoading ? (<Spinner />) : ("")}
+          {isLoading ? (<Spinner position={"position-absolute"}/>) : ("")}
           <div className={isLoading ? ("container w-25 p-3 border rounded shadow blur") : ("container w-25 p-3 border rounded shadow")}>
             <div id="errors-container">
               {isError ? (
                 <div className="alert alert-danger" role="alert">
                   {message}
                 </div>
-              ): ("")}
+              ) : ("")}
             </div>
             <form onSubmit={onSubmit} id="form">
               <div className="container">

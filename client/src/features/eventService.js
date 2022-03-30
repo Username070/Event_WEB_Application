@@ -2,6 +2,12 @@ import axios from "axios";
 
 const API_URL = "http://localhost:9000/api/events/";
 
+const globalEvents = async () => {
+    const response = await axios.get(API_URL + "globalEvents")
+    
+    return response.data
+}
+
 const createEvent = async (eventData, token) => {
     const config = {
         headers: {
@@ -15,6 +21,7 @@ const createEvent = async (eventData, token) => {
 }
 
 const eventService = {
+    globalEvents,
     createEvent,
 }
 

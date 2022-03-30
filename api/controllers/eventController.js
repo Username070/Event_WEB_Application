@@ -2,6 +2,11 @@ const asyncHandler = require('express-async-handler');
 const Event = require('../models/eventModel');
 const User = require('../models/userModel');
 
+const globalEvents = asyncHandler(async (req, res) => {
+    const events = await Event.aggregate([{ $sample: { size: 4 } }])
+    res.status(200).json(events)
+})
+
 const setEvent = asyncHandler(async (req, res) => {
 
     // TODO: Check if event already exists
@@ -26,4 +31,5 @@ const setEvent = asyncHandler(async (req, res) => {
 
 module.exports = {
     setEvent,
+    globalEvents
 }
