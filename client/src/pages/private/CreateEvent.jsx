@@ -14,6 +14,10 @@ const CreateEvent = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    dispatch(reset())
+  }, []);
+
+  useEffect(() => {
     if (!user) {
       navigate("/login");
     }

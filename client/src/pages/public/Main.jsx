@@ -10,6 +10,11 @@ const Main = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // This should be executed whenever the page is loaded
+    // So it would be correct to put it into seperate useEffect()
+    // But that way it does't work for whatever reason..
+    dispatch(reset())
+
     const { events, isLoading, isError, message } = useSelector((state) => state.events)
 
     useEffect(() => {
@@ -37,7 +42,7 @@ const Main = () => {
                 <div className="container-fluid gap-3">
                     <div className="row">
                         {events.length > 0 ? (
-                            events[0].map((event) => (
+                            events.map((event) => (
                                 <EventCard key={event._id} event={event}/>  
                             ))
                         ) : (

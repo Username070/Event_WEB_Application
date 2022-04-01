@@ -70,7 +70,7 @@ export const eventSlice = createSlice({
             .addCase(globalEvents.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.events.push(action.payload)
+                state.events = action.payload
             })
             .addCase(globalEvents.rejected, (state, action) => {
                 state.isLoading = false
