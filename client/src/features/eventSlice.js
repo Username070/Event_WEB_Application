@@ -9,10 +9,9 @@ const initialState = {
     message: ''
 }
 
-export const globalEvents = createAsyncThunk("events/globalEvents", async (_, thunkAPI) => {
+export const getEvents = createAsyncThunk("events/getEvents", async (quantity, thunkAPI) => {
     try {
-
-        return await eventService.globalEvents()
+        return await eventService.getEvents(quantity)
     } catch (error) {
         const message =
         (error.response &&
@@ -64,15 +63,15 @@ export const eventSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
-            .addCase(globalEvents.pending, (state) => {
+            .addCase(getEvents.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(globalEvents.fulfilled, (state, action) => {
+            .addCase(getEvents.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
                 state.events = action.payload
             })
-            .addCase(globalEvents.rejected, (state, action) => {
+            .addCase(getEvents.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

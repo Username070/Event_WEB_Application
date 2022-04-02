@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { globalEvents, reset } from "../../features/eventSlice";
+import { getEvents, reset } from "../../features/eventSlice";
 import EventCard from "../../components/EventCard"
 import Spinner from "../../components/Spinner"
 
@@ -22,7 +22,7 @@ const Main = () => {
             console.log(message)
         }
 
-        dispatch(globalEvents())
+        dispatch(getEvents({quantity: 2}))
         return () => {
             dispatch(reset())
         }

@@ -2,9 +2,14 @@ const asyncHandler = require('express-async-handler');
 const Event = require('../models/eventModel');
 const User = require('../models/userModel');
 
-const globalEvents = asyncHandler(async (req, res) => {
-    const events = await Event.aggregate([{ $sample: { size: 4 } }])
-    res.status(200).json(events)
+const getEvents = asyncHandler(async (req, res) => {
+    if (req.body.quantity) {
+        const events = await Event.aggregate([{ $sample: { size: req.body.quantity } }])
+        res.status(200).json(events)
+    } else {
+        const events = await Event.find()
+        res.status(200).json(events)
+    }
 })
 
 const setEvent = asyncHandler(async (req, res) => {
@@ -31,5 +36,5 @@ const setEvent = asyncHandler(async (req, res) => {
 
 module.exports = {
     setEvent,
-    globalEvents
+    getEvents
 }
