@@ -43,7 +43,7 @@ const Main = () => {
                     <div className="row">
                         {events.length > 0 ? (
                             events.map((event) => (
-                                <EventCard key={event._id} event={event}/>  
+                                <EventCard key={event._id} data={event}/>  
                             ))
                         ) : (
                             <Spinner position={"position-relative"}/>

@@ -50,3 +50,10 @@ textarea {
 .blur {
   filter: blur(10px);
 }
+
+.page-item.disabled,
+.page-item.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: #999;
+}
