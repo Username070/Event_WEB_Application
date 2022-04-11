@@ -30,6 +30,15 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/events', require('./routes/eventRoutes'));
 app.use(errorHandler)
 
+if(process_env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.get("*", (req, res) => res.sendFile(
+    path.resolve(__dirname, "../", "client", "build", "index.html")
+  ))
+} else {
+  app.get("/", (req, res) => res.send("Please set to production"));
+}
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
