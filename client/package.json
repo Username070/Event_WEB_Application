@@ -24,9 +24,8 @@
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
-    "express":"*",
-    "body-parser":"*",
-    "bcrypt": "^0.8.5"
+    "express":"~4.17.3",
+    "bcryptjs": "^2.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
